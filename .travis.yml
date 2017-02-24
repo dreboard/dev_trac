@@ -1,0 +1,9 @@
+language: php
+php:
+  - 7.0
+script: phpunit test.php
+
+branches:
+  only:
+    - development
+    - master

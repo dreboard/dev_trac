@@ -43,7 +43,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">SB Admin</a>
+            <a class="navbar-brand" href="{{ url('/') }}">DevTrac</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li class="message-footer">
-                        <a href="#">Read All New Messages</a>
+                        <a href="{{ url('/allTickets') }}">Read All New Messages</a>
                     </li>
                 </ul>
             </li>
@@ -123,7 +123,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#">View All</a>
+                        <a href="{{ url('/allTickets') }}">View All</a>
                     </li>
                 </ul>
             </li>
@@ -131,17 +131,17 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a href="{{ url('/allTickets') }}"><i class="fa fa-fw fa-user"></i> Profile</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        <a href="{{ url('/allTickets') }}"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        <a href="{{ url('/allTickets') }}"><i class="fa fa-fw fa-gear"></i> Settings</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="{{ url('/allTickets') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
                 </ul>
             </li>
@@ -159,30 +159,30 @@
                     <a href="{{ url('/newTicket') }}"><i class="fa fa-fw fa-bar-chart-o"></i> New Ticket</a>
                 </li>
                 <li>
-                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    <a href="{{ url('/allProjects') }}"><i class="fa fa-fw fa-edit"></i> Projects</a>
                 </li>
                 <li>
-                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    <a href="{{ url('/newProject') }}"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
                 </li>
                 <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    <a href="{{ url('/allTickets') }}"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="demo" class="collapse">
                         <li>
-                            <a href="#">Dropdown Item</a>
+                            <a href="{{ url('/allTickets') }}">Dropdown Item</a>
                         </li>
                         <li>
-                            <a href="#">Dropdown Item</a>
+                            <a href="{{ url('/allTickets') }}">Dropdown Item</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    <a href="{{ url('/allTickets') }}"><i class="fa fa-fw fa-file"></i> Blank Page</a>
                 </li>
                 <li>
-                    <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    <a href="{{ url('/allTickets') }}"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                 </li>
             </ul>
         </div>
