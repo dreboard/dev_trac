@@ -20,7 +20,7 @@
 
     <script>
         $( function() {
-            $( "#create_date, #due_date" ).datepicker({ dateFormat: 'yyyy-mm-dd' });
+            $( "#create_date, #due_date" ).datepicker({ dateFormat: 'yy-mm-dd' });
         } );
     </script>
     <script>

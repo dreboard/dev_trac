@@ -60,11 +60,13 @@ class TicketController extends Controller
      */
     public function newTicketSave(Request $request)
     {
+
 	    $ticket = new Ticket;
     	$ticket->title = $request->input('title');
 	    $ticket->description = $request->input('description');
 	    $ticket->completed = $request->input('completed');
 	    //$ticket->hours = $request->input('hours');
+
 	    $ticket->create_date = date("Y-m-d", strtotime($request->input('create_date')));
 	    $ticket->due_date = date("Y-m-d", strtotime($request->input('due_date')));
 	    $ticket->user_id = $request->input('user_id');
