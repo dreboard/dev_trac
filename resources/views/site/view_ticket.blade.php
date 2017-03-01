@@ -99,17 +99,7 @@
                         </div>
                     </form>
         </div>
-        <div class="col-md-4">
-            <ul class="list-group">
-
-                @foreach($viewLastTen as $last_ten)
-                    <li class="list-group-item">
-                        <a href="{{ url("/viewTicket/$last_ten->id") }}">{{ $last_ten->title }} #{{ $last_ten->id }}</a>
-                    </li>
-                @endforeach
-            </ul>
-
-        </div>
+        @include('layouts.rightside');
     </div>
 </div>
 @endsection
