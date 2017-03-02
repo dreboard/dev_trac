@@ -26,5 +26,20 @@ class Ticket extends Model
 		                     ->get();
 		return $result;
 	}
+	/**
+	 * Last ten tickets by user.
+	 *
+	 * @param int $user_id
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function getTicketSearchResults( $keyword ) {
+		$result = DB::table( 'tickets' )->where( "title", "LIKE", "%$keyword%" )
+		            ->orWhere( "id", "LIKE", "%$keyword%" )
+		            ->orderBy( 'id', 'desc' )
+		            ->limit( 25 )
+		            ->get();
 
+		return $result;
+	}
 }

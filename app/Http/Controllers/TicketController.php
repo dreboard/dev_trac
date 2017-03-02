@@ -70,7 +70,7 @@ class TicketController extends Controller
 	    try{
 		    $ticket = new Ticket;
 
-		    var_dump($ticket->viewLastTenTicketsById($request->input('user_id'))); die();
+		    //var_dump($ticket->viewLastTenTicketsById($request->input('user_id'))); die();
 
 		    $ticket->title = $request->input('title');
 		    $ticket->description = $request->input('description');
@@ -125,6 +125,28 @@ class TicketController extends Controller
 		} catch (\Error $er){
 			echo $er->getMessage();
 		}
+
+	}
+
+	/**
+	 * Edit ticket.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function ticketSearch(Request $request)
+	{
+		try{
+			$keyword = filter_var($request->input('keyword'), FILTER_SANITIZE_STRING);
+			$searchResults = $this->ticket->getTicketSearchResults($keyword);
+			if(!$searchResults){
+				$searchResults = "No ticket found";
+			}
+		} catch (Exception $e){
+			$searchResults = $e->getMessage();
+		}finally {
+			return view("site/view_search", ["searchResults" => $searchResults]);
+		}
+
 
 	}
 }

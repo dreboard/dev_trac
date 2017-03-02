@@ -24,3 +24,5 @@ Route::get('/viewTicket/{id}', 'TicketController@viewTicketById');
 Route::get('/newTicket', 'TicketController@newTicketPage');
 Route::post('newTicket', 'TicketController@newTicketSave');
 Route::post('editTicket', 'TicketController@editTicket');
+Route::post('ticketSearch', 'TicketController@ticketSearch');
+
