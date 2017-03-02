@@ -1,11 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ticket, App\Helpers\SiteHelper;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
-
+/**
+ * Class TicketController
+ * @package App\Http\Controllers
+ */
 class TicketController extends Controller
 {
 
@@ -66,7 +71,16 @@ class TicketController extends Controller
      */
     public function newTicketSave(Request $request)
     {
+	    $validator = Validator::make($request->all(), [
+		    'title' => 'required||max:255',
+		    'description' => 'required',
+	    ]);
 
+	    if ($validator->fails()) {
+		    return redirect('newTicket')
+			    ->withErrors($validator)
+			    ->withInput();
+	    }
 	    try{
 		    $ticket = new Ticket;
 

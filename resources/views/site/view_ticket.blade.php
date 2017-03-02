@@ -115,7 +115,17 @@
                                         </label>
                                     </div>
                                     <div class="col-sm-6">
-
+                                        <select name="priority" id="priority" class="form-control">
+                                            @if(isset($ticket->priority))
+                                                <option value="{{$ticket->priority}}" selected>{{$ticket->priority}}</option>
+                                            @else
+                                                <option value="new" selected>New</option>
+                                            @endif
+                                            <option value="low" selected>Low</option>
+                                            <option value="medium">Medium</option>
+                                            <option value="high">High</option>
+                                            <option value="urgent">Urgent</option>
+                                        </select>
                                     </div>
 
                                 </div>

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class Ticket extends Model
 {
-	protected $fillable = ['title', 'description', 'create_date', 'due_date', 'completed', 'user_id', 'project_id', 'status'];
+	protected $fillable = ['title', 'description', 'create_date', 'due_date', 'completed', 'user_id', 'project_id', 'status', 'priority'];
 	public $timestamps = false;
 	protected $dateFormat = 'Y-m-d';
 

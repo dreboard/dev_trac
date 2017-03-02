@@ -4,12 +4,21 @@
     <div class="container-fluid">
     <div class="row">
         <div class="col-md-8">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form class="form-horizontal" role="form" action="{{ action('TicketController@newTicketSave') }}" method="post" id="newTicketForm">
                 <h2>Create New Ticket</h2>
                 <div class="form-group">
                     <label for="title" class="col-sm-3 control-label">Title</label>
                     <div class="col-sm-9">
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Title" maxlength="255" autofocus>
+                        <input value="{{ old('title') }}" type="text" name="title" class="form-control" id="title" placeholder="Title" maxlength="255" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
@@ -87,7 +96,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Status</label>
+                    <label class="control-label col-sm-3">Status/Priority</label>
                     <div class="col-sm-6">
                         <div class="row">
                             <div class="col-sm-6">
@@ -101,7 +110,15 @@
                                 </label>
                             </div>
                             <div class="col-sm-6">
-
+                                <label class="radio-inline">
+                                    <select name="priority" id="priority" class="form-control">
+                                        <option value="" selected>Priority</option>
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                        <option value="urgent">Urgent</option>
+                                    </select>
+                                </label>
                             </div>
 
                         </div>
