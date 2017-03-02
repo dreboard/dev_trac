@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Ticket;
-use League\Flysystem\Exception;
+use App\Ticket, App\Helpers\SiteHelper;
+
 
 class TicketController extends Controller
 {
@@ -77,10 +77,11 @@ class TicketController extends Controller
 		    $ticket->completed = $request->input('completed');
 		    //$ticket->hours = $request->input('hours');
 
-		    $ticket->create_date = date("Y-m-d", strtotime($request->input('create_date')));
-		    $ticket->due_date = date("Y-m-d", strtotime($request->input('due_date')));
+		    $ticket->create_date = SiteHelper::formatStartDate($request->input('create_date'));
+		    $ticket->due_date = SiteHelper::formatEndDate($ticket->create_date, $request->input('due_date'));
 		    $ticket->user_id = $request->input('user_id');
 		    $ticket->project_id = $request->input('project_id');
+		    $ticket->status = $request->input('status');
 
 		    $ticket->save();
 		    $insertedId = $ticket->id;
@@ -113,7 +114,8 @@ class TicketController extends Controller
 				      'due_date' => date("Y-m-d", strtotime($request->input('due_date'))),
 				      'completed' => $request->input('completed'),
 				      'project_id' => (int)$request->input('project_id'),
-				      'user_id' => (int)$request->input('user_id')
+				      'user_id' => (int)$request->input('user_id'),
+				      'status' => $request->input('status')
 			      ]);
 
 			$ticketInfo = Ticket::where('id', '=', (int) $request->input('id'))->get();
@@ -137,12 +139,21 @@ class TicketController extends Controller
 	{
 		try{
 			$keyword = filter_var($request->input('keyword'), FILTER_SANITIZE_STRING);
-			$searchResults = $this->ticket->getTicketSearchResults($keyword);
+
+			try{
+				$searchResults = $this->ticket->getTicketSearchResults($keyword);
+			}catch (\Exception $e){
+				$searchResults = $e->getMessage();
+			}
+
 			if(!$searchResults){
 				$searchResults = "No ticket found";
 			}
-		} catch (Exception $e){
+
+		} catch (\Exception $e){
 			$searchResults = $e->getMessage();
+		} catch (\Error $er){
+			$searchResults = $er->getMessage();
 		}finally {
 			return view("site/view_search", ["searchResults" => $searchResults]);
 		}

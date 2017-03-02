@@ -30,8 +30,12 @@
                                     <div class="col-sm-6">
                                         <label class="radio-inline">
                                             <select name="completed" id="completed" class="form-control">
-                                                <option value="{{$ticket->completed}}" selected>% {{$ticket->completed}}</option>
-                                                <option value="0">0%</option>
+                                                @if(isset($ticket->status))
+                                                    <option value="{{$ticket->completed}}" selected>% {{$ticket->completed}}</option>
+                                                @else
+                                                    <option value="0" selected>0%</option>
+                                                @endif
+
                                                 <option value="10">10%</option>
                                                 <option value="20">20%</option>
                                                 <option value="30">30%</option>
@@ -86,6 +90,32 @@
                                             <input type="hidden" name="id" value="{{$ticket->id}}">
                                             <input type="text" name="due_date" class="form-control datepicker" id="due_date" value="{{$ticket->due_date}}">
                                         </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-3">Status</label>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label class="radio-inline">
+                                            <select name="status" id="status" class="form-control">
+                                                @if(isset($ticket->status))
+                                                    <option value="{{$ticket->status}}" selected>{{$ticket->status}}</option>
+                                                @else
+                                                    <option value="new" selected>New</option>
+                                                @endif
+
+                                                <option value="working">Working</option>
+                                                <option value="complete">Complete</option>
+                                                <option value="closed">Closed</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6">
+
                                     </div>
 
                                 </div>

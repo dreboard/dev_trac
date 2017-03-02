@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label for="title" class="col-sm-3 control-label">Title</label>
                     <div class="col-sm-9">
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Title" autofocus>
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Title" maxlength="255" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
@@ -72,14 +72,14 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="text" name="create_date" class="form-control datepicker" id="create_date">
+                                    <input type="text" name="create_date" class="form-control datepicker" id="create_date" placeholder="Start Date">
                                 </label>
                             </div>
                             <div class="col-sm-6">
                                 <label class="radio-inline">
                                     <input type="hidden" name="user_id" value="1">
                                     <input type="hidden" name="project_id" value="1">
-                                    <input type="text" name="due_date" class="form-control datepicker" id="due_date">
+                                    <input type="text" name="due_date" class="form-control datepicker" id="due_date" placeholder="Due Date">
                                 </label>
                             </div>
 
@@ -87,21 +87,35 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
+                    <label class="control-label col-sm-3">Status</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="new" selected>New</option>
+                                        <option value="working">Working</option>
+                                        <option value="complete">Complete</option>
+                                        <option value="closed">Closed</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-6 col-sm-offset-3">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="col-md-4">
-            <ul>
-                <li>Link 1</li>
-                <li>Link 2</li>
-                <li>Link 3</li>
-            </ul>
-
-        </div>
+        @include('layouts.rightside');
     </div>
 </div>
 @endsection

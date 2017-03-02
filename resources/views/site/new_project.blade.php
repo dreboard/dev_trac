@@ -46,7 +46,27 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Status</label>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="radio-inline">
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="new" selected>New</option>
+                                        <option value="working">Working</option>
+                                        <option value="complete">Complete</option>
+                                        <option value="closed">Closed</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
 
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="checkbox">
@@ -57,8 +77,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Sign in</button>
+                    <div class="col-sm-offset-2 col-sm-6">
+                        <button type="submit" class="btn btn-default">Save</button>
                     </div>
                 </div>
             </form>
