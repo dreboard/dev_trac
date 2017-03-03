@@ -14,7 +14,7 @@
                 </div>
             @endif
             <form class="form-horizontal" role="form" action="{{ action('TicketController@newTicketSave') }}" method="post" id="newTicketForm">
-                <h2>Create New Ticket</h2>
+                <h2>{{ __('tickets.create_new_ticket')}}</h2>
                 <div class="form-group">
                     <label for="title" class="col-sm-3 control-label">Title</label>
                     <div class="col-sm-9">
@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="description" class="col-sm-3 control-label">Description</label>
                     <div class="col-sm-9">
-                        <textarea name="description" class="form-control" id="description" rows="5"></textarea>
+                        <textarea name="description" class="form-control" id="description" rows="5">{{ old('description') }}</textarea>
                     </div>
                 </div>
 
@@ -81,7 +81,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <label class="radio-inline">
-                                    <input type="text" name="create_date" class="form-control datepicker" id="create_date" placeholder="Start Date">
+                                    <input value="{{ old('create_date') }}" type="text" name="create_date" class="form-control datepicker" id="create_date" placeholder="Start Date">
                                 </label>
                             </div>
                             <div class="col-sm-6">
