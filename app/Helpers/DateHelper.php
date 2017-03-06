@@ -17,7 +17,8 @@ class DateHelper {
 	 * @param string $date
 	 * @return string
 	 */
-	public static function formatStartDate( $date ) {
+	public static function formatStartDate(string $date ):string
+	{
 		if ( empty( $date ) || is_null( $date ) ) {
 			return date( 'Y-m-d' );
 		}
@@ -32,7 +33,8 @@ class DateHelper {
 	 * @param string $end
 	 * @return string
 	 */
-	public static function formatEndDate( $start, $end ) {
+	public static function formatEndDate(string $start, string $end ):string
+	{
 		if ( empty( $end ) || is_null( $end ) ) {
 			return date( 'Y-m-d', strtotime( $start . ' + 30 days' ) );
 		}

@@ -6,8 +6,62 @@
         <div class="col-md-8">
                 @foreach($ticketInfo as $ticket)
                 <h2>{{ $ticket->title }} #{{ $ticket->id }}</h2>
+                    <p>{{ $ticket->completed }}% completed</p>
                     <p>{{ $ticket->description }}</p>
+                <button type="button" class="btn btn-primary" id="showEditForm">Edit Ticket</button>
+
                 @endforeach
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Number</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Due</th>
+                        </tr>
+
+                        @foreach($ticketInfo as $ticket)
+                            <tr>
+                                <td>#{{ $ticket->id }}</td>
+                                <td>{{ $ticket->status }}</td>
+                                <td>{{ $ticket->create_date }}</td>
+                                <td>{{ $ticket->due_date }}</td>
+                            </tr>
+                        @endforeach
+
+                    </table>
+                    <hr />
+                    <h3>Notes <button type="button" class="btn btn-primary" id="addNoteBtn">Add Note</button></h3>
+                    <form class="form-horizontal" role="form" action="{{ action('TicketController@editTicket') }}" method="post" id="addNoteForm">
+                        <div class="form-group">
+                            <label for="description" class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-9">
+                                <textarea name="description" class="form-control" id="description" rows="5">{{ $ticket->description }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-9 col-sm-offset-3">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary" id="addNoteBtn">Add Note</button>
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Date</th>
+                            <th>Note</th>
+                            <th>Created By</th>
+                        </tr>
+
+                        @foreach($ticketInfo as $ticket)
+                            <tr>
+                                <td>{{ $ticket->create_date }}</td>
+                                <td>{{ $ticket->description }}</td>
+                                <td>{{ $ticket->id }}</td>
+                            </tr>
+                        @endforeach
+
+                    </table>
+
                     <form class="form-horizontal" role="form" action="{{ action('TicketController@editTicket') }}" method="post" id="editTicketForm">
 
                         <div class="form-group">
@@ -134,7 +188,7 @@
                         <div class="form-group">
                             <div class="col-sm-9 col-sm-offset-3">
                                 {{ csrf_field() }}
-                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                <button type="submit" class="btn btn-primary" id="editTicketBtn">Update</button>
                             </div>
                         </div>
                     </form>
